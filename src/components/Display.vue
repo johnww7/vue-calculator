@@ -7,14 +7,14 @@
 
 <script>
 export default {
-    name: 'Display'
+    name: 'display'
 }
 </script>
 
 <style scoped>
     #display {
-        width: 375px;
-        height: 150px;
+        width: 400px;
+        height: 160px;
         border: 1px solid black;
     }
 </style>

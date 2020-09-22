@@ -1,19 +1,21 @@
 <template>
+<div>
 <button class="arith-button">
     {{opsValue}}
-</button>    
+</button>   
+</div> 
 </template>
 
 <script>
 export default {
-    name: 'ArithmeticButton',
+    name: "arithmetic-button",
     props: ['opsValue']
 }
 </script>
 
-<style scoped>
+<style>
     .arith-button {
-        width: 75px;
-        height: 75px;
+        width: 80px;
+        height: 80px;
     }
 </style>

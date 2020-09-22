@@ -1,27 +1,29 @@
 <template>
 <div id="calculator-container">
-    <Display class="display-area"></Display>
-    <Clear class="clear-area"></Clear>
-    <EqualButton class="equal-area"></EqualButton>
-    <DecimalButton class="decimal-area"></DecimalButton>
+    <display class="display-area"></display>
+    <clear-button class="clear-area"></clear-button>
+    <equal-button class="equal-area"></equal-button>
+    <decimal-button class="decimal-area"></decimal-button>
     
-    <NumberedButton
+    <number-button
         v-for="num in numButtonValues"
         v-bind:key="num.id"
         v-bind:num="num.value"
         v-bind:buttonId="num.id"
         v-bind:style="{ gridArea: num.id}"
+        v-on:numberedButtonPressed="numberButtonVal"
+    
     >
-    </NumberedButton>
-    <NumberedButton class="num-zero" 
-    v-bind:num="0" buttonId="zero"> </NumberedButton>
-    <ArithmeticButton 
+    </number-button>
+    <number-button class="num-zero" 
+    v-bind:num="0" buttonId="zero"> </number-button>
+    <arithmetic-button 
         v-for="ops in arithButtonValues"
         v-bind:key="ops.id"
         v-bind:opsValue="ops.value"
         v-bind:style="{ gridArea: ops.id}"
     >
-    </ArithmeticButton>
+    </arithmetic-button>
 </div>    
 </template>
 
@@ -36,12 +38,12 @@ import DecimalButton from '../components/DecimalButton.vue';
 export default {
    name: 'CalculatorView',
    components: {
-       ArithmeticButton,
-       Clear,
-       Display,
-       EqualButton,
-       NumberedButton,
-       DecimalButton
+       "arithmetic-button":ArithmeticButton,
+       "clear-button":Clear,
+       "display":Display,
+       "equal-button":EqualButton,
+       "number-button":NumberedButton,
+       "decimal-button":DecimalButton
    },
    data() {
        return {
@@ -56,20 +58,32 @@ export default {
        
        }
        
+   },
+   methods: {
+       numberButtonVal() {
+           console.log('digit button pressed')
+       }
    } 
 }
 
 </script>
 
-<style scoped>
+<style>
     #calculator-container{
         width: 500px;
         height: 500px;
         display: grid;
         margin: 25px auto;
+        
         border: 2px solid blue;
-        grid-template-columns: repeat(5, 75px);
-        grid-template-rows: repeat(6, 75px);
+        grid-template-columns: repeat(5, 80px);
+        grid-template-rows: repeat(6, 80px);
+        /*justify-items: center;
+        align-items: center;*/
+        justify-content: center;
+        padding-top: 10px;
+        grid-column-gap: 1px;
+        grid-row-gap: 1px;
         grid-template-areas:
             "display display display display display"
             "display display display display display"
@@ -93,35 +107,12 @@ export default {
     }
     .num-zero{
         grid-area: num0;
-        width: 150px;
+        width: 160px;
     }
     /*.num-area1 {
         grid-area: num1;
     }
-    .num-area2 {
-        grid-area: num2;
-    }
-    .num-area3 {
-        grid-area: num3;
-    }
-    .num-area4 {
-        grid-area: num4;
-    }
-    .num-area5 {
-        grid-area: num5;
-    }
-    .num-area6 {
-        grid-area: num6;
-    }
-    .num-area7 {
-        grid-area: num7;
-    }
-    .num-area8 {
-        grid-area: num8;
-    }
-    .num-area9 {
-        grid-area: num9;
-    }*/
+    */
     .ops-area {
         grid-area: ops;
     }

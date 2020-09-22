@@ -1,20 +1,20 @@
 <template>
-<div>
+
     <button id="clear">
         AC
     </button>
-</div>    
+    
 </template>
 
 <script>
 export default {
-    name: 'Clear'
+    name: "clear-button"
 }
 </script>
 
-<style scoped>
+<style>
     #clear {
-        width: 75px;
-        height: 150px;
+        width: 80px;
+        height: 160px;
     }
 </style>

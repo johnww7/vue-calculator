@@ -8,13 +8,13 @@
 
 <script>
 export default {
-    name: 'EqualButton'
+    name: 'equal-button'
 }
 </script>
 
 <style scoped>
     #equal {
-        width: 75px;
-        height: 150px;
+        width: 80px;
+        height: 160px;
     }
 </style>

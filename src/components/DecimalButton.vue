@@ -1,18 +1,20 @@
 <template>
+    
     <button id="decimal">
         .
-    </button>    
+    </button>
+        
 </template>
 
 <script>
 export default {
-    name: 'DecimalButton'
+    name: "decimal-button"
 }
 </script>
 
 <style scoped>
     #decimal {
-        width: 75px;
-        height: 75px;
+        width: 80px;
+        height: 80px;
     }
 </style>

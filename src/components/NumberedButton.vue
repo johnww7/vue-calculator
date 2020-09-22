@@ -1,18 +1,32 @@
 <template>
+
     <button :id="buttonId" class="num-button"> 
-        {{num}}</button>
+        {{num}}
+    </button>
+    
 </template>
 
 <script>
 export default {
-    name: 'NumberedButton',
-    props: ["num", "buttonId"]
+    name: "number-button",
+    props: ["num", "buttonId"],
+    data() {
+        return {
+            buttonNum: this.num
+        }
+    },
+    methods: {
+        getButtonValue() {
+            this.$emit('numberedButtonPressed', this.buttonNum)
+        }
+    }
 }
 </script>
 
-<style scoped>
+<style>
     .num-button {
-        width: 75px;
-        height: 75px;
+        width: 80px;
+        height: 80px;
+        
     }
 </style>

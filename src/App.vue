@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    
-    <CalculatorView/>
+    <CalculatorView></CalculatorView>
   </div>
 </template>
 
