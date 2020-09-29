@@ -15,8 +15,13 @@
     
     >
     </number-button>
-    <number-button class="num-zero" 
-    v-bind:num="0" buttonId="zero"> </number-button>
+    <number-button 
+        class="num-zero" 
+        v-bind:num="0" 
+        buttonId="zero"
+        v-on:numberedButtonPressed="numberButtonVal"
+    > 
+    </number-button>
     <arithmetic-button 
         v-for="ops in arithButtonValues"
         v-bind:key="ops.id"
@@ -60,8 +65,8 @@ export default {
        
    },
    methods: {
-       numberButtonVal() {
-           console.log('digit button pressed')
+       numberButtonVal(value) {
+           console.log('digit button pressed: ' + value);
        }
    } 
 }

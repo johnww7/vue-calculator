@@ -1,6 +1,6 @@
 <template>
 
-    <button :id="buttonId" class="num-button"> 
+    <button :id="buttonId" class="num-button" v-on:click="getButtonValue"> 
         {{num}}
     </button>
     
@@ -17,7 +17,11 @@ export default {
     },
     methods: {
         getButtonValue() {
-            this.$emit('numberedButtonPressed', this.buttonNum)
+            //this.$emit('numberedButtonPressed', this.buttonNum)
+            let numberString = this.buttonNum.toString().replace(/\s/g, "");
+            this.$store.commit('incrementEntry',  numberString);
+            console.log("In number button component: " + typeof(this.buttonNum))
+
         }
     }
 }

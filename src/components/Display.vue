@@ -1,13 +1,23 @@
 <template>
 <div id="display">
-    <span id="top-display"></span>
-    <span id=bottom-display></span>
+    <span id="output-display">{{entireOperationDisplay}}</span>
+    <br />
+    <span id=input-display>{{currentEntryDisplay}}</span>
 </div>    
 </template>
 
 <script>
 export default {
-    name: 'display'
+    name: 'display',
+    computed: {
+        currentEntryDisplay() {
+            return this.$store.getters.getEntry;
+        },
+        entireOperationDisplay() {
+            let tempOperation = this.$store.getters.getEntireOperation;
+            return tempOperation.join('');
+        }
+    }
 }
 </script>
 
@@ -16,5 +26,7 @@ export default {
         width: 400px;
         height: 160px;
         border: 1px solid black;
+        display: flex;
+        flex-direction: column;
     }
 </style>
