@@ -58,7 +58,7 @@ export default {
            {id: 'seven', value: 7}, {id: 'eight', value: 8}, {id: 'nine', value: 9}],
         arithButtonValues: [
             {id: 'add', value: '+'}, {id: 'subtract', value: '-'},
-            {id: 'multiply', value: 'x'}, {id: 'divide', value: '/'}
+            {id: 'multiply', value: '×'}, {id: 'divide', value: '÷'}
         ]
        
        }

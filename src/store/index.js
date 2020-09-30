@@ -32,13 +32,24 @@ export const store = new Vuex.Store({
             }
         },
         addOperation(state, value){
-            if(value === '+' || value === '-' || value === '/' || value ==='x') {
+            let lastEntireOperation = state.entireOperation[state.entireOperation.length-1];
+            let arithmeticExpression = /[+-×÷]/;
+            if(arithmeticExpression.test(lastEntireOperation) && state.currentEntry == '') {
+                console.log('Operation: ' + state.entireOperation);
+                state.currentEntry = ''
+            }
+            else {
+                state.entireOperation.push(state.currentEntry, value)
+                state.currentEntry = '';
+            }
+            
+            /*if(value === '+' || value === '-' || value === '/' || value ==='x') {
                 state.entireOperation.push(state.currentEntry, value);
                 state.currentEntry = value;
             }
             else {
                 console.log('Not an arithmetic value');
-            }
+            }*/
         }
     }
 })
