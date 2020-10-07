@@ -1,6 +1,6 @@
 <template>
     
-    <button id="decimal">
+    <button id="decimal" v-on:click="addDecimal">
         .
     </button>
         
@@ -8,7 +8,13 @@
 
 <script>
 export default {
-    name: "decimal-button"
+    name: "decimal-button",
+    methods: {
+        addDecimal() {
+            //let numberString = this.buttonNum.toString().replace(/\s/g, "");
+            this.$store.commit('incrementEntry',  '.');
+        }
+    }
 }
 </script>
 

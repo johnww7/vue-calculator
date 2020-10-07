@@ -15,7 +15,10 @@ export const store = new Vuex.Store({
         },
         getEntireOperation(state) {
             return state.entireOperation;
-        } 
+        },
+        getTotalValue(state) {
+            return state.accumulator;
+        }
     },
     mutations: {
         incrementEntry(state, value) {
@@ -40,6 +43,7 @@ export const store = new Vuex.Store({
             }
             else {
                 state.entireOperation.push(state.currentEntry, value)
+                state.currentEntry = value;
                 state.currentEntry = '';
             }
             
@@ -50,6 +54,22 @@ export const store = new Vuex.Store({
             else {
                 console.log('Not an arithmetic value');
             }*/
+        },
+        setTotal(state, value){
+            if(value == '=') {
+                state.entireOperation.push(state.currentEntry);
+                state.currentEntry = value;
+                state.entireOperation.push(value);            
+            }
+            else {
+                console.log('Wrong input');
+            }
+        },
+        setAccumulator(state, value) {
+            state.accumulator = value;
+        },
+        pushAccumulator(state, value) {
+            state.entireOpeartion.push(value);
         }
     }
 })
