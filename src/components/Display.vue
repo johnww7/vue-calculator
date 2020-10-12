@@ -11,7 +11,9 @@ export default {
     name: 'display',
     computed: {
         currentEntryDisplay() {
-            return this.$store.getters.getEntry;
+            let currentEntry = this.$store.getters.getEntry;
+            console.log('current inputdisplay: ' + currentEntry) 
+             return this.$store.getters.getEntry;
             /*let returnedEntry = this.$store.getters.getEntry;
             let arithmeticExpression = /[+-×÷]/;
             let returnValue = ''
@@ -26,7 +28,14 @@ export default {
         },
         entireOperationDisplay() {
             let tempOperation = this.$store.getters.getEntireOperation;
-            return tempOperation.join('');
+            console.log('outputdisplay: ' + typeof(tempOperation));
+            //let emptyArray = [];
+            if(!Array.isArray(tempOperation) || !tempOperation.length) {
+                return '0';
+            }
+            else {
+                return tempOperation.join('');
+            }
         }
     }
 }

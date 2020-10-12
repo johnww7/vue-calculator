@@ -72,6 +72,12 @@ export const store = new Vuex.Store({
         pushAccumulator(state, value) {
             state.entireOperation.push(value); 
             state.currentEntry = value;
+        },
+        clearAll(state) {
+            state.accumulator = 0;
+            state.currentEntry = '0';
+            let length = state.entireOperation.length
+            state.entireOperation.splice(0, length);
         }
     }
 })

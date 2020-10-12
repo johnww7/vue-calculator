@@ -1,6 +1,6 @@
 <template>
 
-    <button id="clear">
+    <button id="clear" v-on:click="allClear">
         AC
     </button>
     
@@ -8,7 +8,15 @@
 
 <script>
 export default {
-    name: "clear-button"
+    name: "clear-button",
+    methods:{
+        allClear() {
+            this.$store.commit('clearAll');
+            console.log('Entry: ' + this.$store.getters.getEntry);
+            console.log('EntireOperation: ' + this.$store.getters.getEntireOperation);
+            console.log('accumulator: ' + this.$store.getters.getTotalValue);
+        }
+    }
 }
 </script>
 
