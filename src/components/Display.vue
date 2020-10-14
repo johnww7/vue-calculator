@@ -28,14 +28,41 @@ export default {
         },
         entireOperationDisplay() {
             let tempOperation = this.$store.getters.getEntireOperation;
-            console.log('outputdisplay: ' + typeof(tempOperation));
+            let currentEntry = this.$store.getters.getEntry;
+            //let lastOperation = tempOperation.length-1;
+            console.log('outputdisplay: ' + tempOperation);
+            console.log('current Entry: ' + currentEntry);
             //let emptyArray = [];
             if(!Array.isArray(tempOperation) || !tempOperation.length) {
-                return '0';
+                //return '0';
+                return currentEntry;
+            }
+            else if((!Array.isArray(tempOperation) || !tempOperation.length) && currentEntry !== '.' && 
+            tempOperation[tempOperation.length-1] !== '.') {
+                return currentEntry;
+            }
+            else if(tempOperation[tempOperation.length-1] == '.' && currentEntry.charAt(currentEntry.length-1) == '.'){
+                return tempOperation.join('');            
+            }
+            else if((!Array.isArray(tempOperation)||tempOperation.length !== 0) && tempOperation.includes('=') == false) {
+                return tempOperation.join('');
+                //return currentEntry;
+            }
+            else if((!Array.isArray(tempOperation) || !tempOperation.length) &&  currentEntry == '.') {
+                return ('0' + currentEntry);
+            }
+            else {
+               return tempOperation.join('');
+               //return currentEntry;
+            }
+            
+            /*if(!Array.isArray(tempOperation) || !tempOperation.length) {
+                //return '0';
+                return currentEntry;
             }
             else {
                 return tempOperation.join('');
-            }
+            }*/
         }
     }
 }
