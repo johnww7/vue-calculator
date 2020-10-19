@@ -22,15 +22,24 @@ export const store = new Vuex.Store({
     },
     mutations: {
         incrementEntry(state, value) {
-            if(state.currentEntry == 0 && value !== '.'){
+            if(state.currentEntry == '0' && value !== '.'){
                 state.currentEntry = value;
+                console.log('Equal zero and val not .')
+            }
+            else if((state.currentEntry).length == 1 && state.currentEntry == '0'
+            && value == '.') {
+                state.currentEntry += '.';
+                console.log('Add decimal after 0')
             }
             else if(state.currentEntry.charAt(state.currentEntry.length-1) !== '.'
                 || value !== '.'){
                     state.currentEntry += value;
+                    console.log('Adding value to enty')
             }
             else {
                // state.currentEntry;
+               //let currentEntry =state.currentEntry;
+               //state.currentEntry = currentEntry;
                console.log('what')
             }
         },

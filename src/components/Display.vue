@@ -12,8 +12,18 @@ export default {
     computed: {
         currentEntryDisplay() {
             let currentEntry = this.$store.getters.getEntry;
-            console.log('current inputdisplay: ' + currentEntry) 
-             return this.$store.getters.getEntry;
+            let currentOperation = this.$store.getters.getEntireOperation;
+            let arithmeticExpression = /[+-×÷]/;
+            console.log('current inputdisplay: ' + currentEntry)
+            if(currentEntry !== '') {
+                return currentEntry;
+            }
+            else if(arithmeticExpression.test(currentOperation[currentOperation.length-1])) {
+                return currentOperation[currentOperation.length-1]
+            }else {
+            //console.log('current inputdisplay: ' + currentEntry) 
+                return this.$store.getters.getEntry;
+            }
             /*let returnedEntry = this.$store.getters.getEntry;
             let arithmeticExpression = /[+-×÷]/;
             let returnValue = ''
@@ -32,6 +42,7 @@ export default {
             //let lastOperation = tempOperation.length-1;
             console.log('outputdisplay: ' + tempOperation);
             console.log('current Entry: ' + currentEntry);
+            console.log('current Operation: ' + tempOperation);
             //let emptyArray = [];
             if(!Array.isArray(tempOperation) || !tempOperation.length) {
                 //return '0';

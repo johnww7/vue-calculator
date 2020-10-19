@@ -15,6 +15,7 @@ export default {
             this.findTotal();
             let accumulatedTotal = this.$store.getters.getTotalValue;
             this.$store.commit('pushAccumulator', accumulatedTotal);
+            //this.$store.commit('clearAll');
         },
         findTotal(){
             //let testExp = /[+-×÷−]/;
