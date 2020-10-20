@@ -22,6 +22,12 @@ export const store = new Vuex.Store({
     },
     mutations: {
         incrementEntry(state, value) {
+            if((state.entireOperation).includes('=')) {
+                state.accumulator = 0;
+                state.currentEntry = '0';
+                let length = state.entireOperation.length
+                state.entireOperation.splice(0, length);
+            }
             if(state.currentEntry == '0' && value !== '.'){
                 state.currentEntry = value;
                 console.log('Equal zero and val not .')
@@ -34,7 +40,7 @@ export const store = new Vuex.Store({
             else if(state.currentEntry.charAt(state.currentEntry.length-1) !== '.'
                 || value !== '.'){
                     state.currentEntry += value;
-                    console.log('Adding value to enty')
+                    console.log('Adding value to entry')
             }
             else {
                // state.currentEntry;
