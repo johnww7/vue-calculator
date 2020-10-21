@@ -82,9 +82,29 @@ export default {
 <style scoped>
     #display {
         width: 400px;
-        height: 160px;
+        height: 100px;
+        margin: auto;
         border: 1px solid black;
         display: flex;
         flex-direction: column;
+        text-align: right;
+        border-radius: 3em/1em
+        
+    }
+    #output-display {
+        width: auto;
+        height: 30px;
+        font-size: 20px;
+        font-family: 'Graduate', cursive;
+        margin-right: 39px;
+        margin-top: 5px;
+    }
+    #input-display {
+        width: auto;
+        height: 50px;
+        font-size: 40px;
+        font-family: 'Graduate', cursive;
+        margin-right: 39px;
+        margin-bottom: 5px;
     }
 </style>
