@@ -84,6 +84,6 @@ export default {
 <style scoped>
     #equal {
         width: 80px;
-        height: 160px;
+        height: 156px;
     }
 </style>

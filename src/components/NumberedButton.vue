@@ -29,8 +29,8 @@ export default {
 
 <style>
     .num-button {
-        width: 80px;
-        height: 80px;
+        width: 75px;
+        height: 75px;
         
     }
 </style>

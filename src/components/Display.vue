@@ -46,23 +46,29 @@ export default {
             //let emptyArray = [];
             if(!Array.isArray(tempOperation) || !tempOperation.length) {
                 //return '0';
+                console.log('Outdisplay 1');
                 return currentEntry;
             }
             else if((!Array.isArray(tempOperation) || !tempOperation.length) && currentEntry !== '.' && 
             tempOperation[tempOperation.length-1] !== '.') {
+                console.log('Outdisplay 2');
                 return currentEntry;
             }
             else if(tempOperation[tempOperation.length-1] == '.' && currentEntry.charAt(currentEntry.length-1) == '.'){
+                console.log('Outdisplay 3');
                 return tempOperation.join('');            
             }
             else if((!Array.isArray(tempOperation)||tempOperation.length !== 0) && tempOperation.includes('=') == false) {
-                return tempOperation.join('');
+                console.log('Outdisplay 4');
+                return tempOperation.join('') + currentEntry;
                 //return currentEntry;
             }
             else if((!Array.isArray(tempOperation) || !tempOperation.length) &&  currentEntry == '.') {
+                console.log('Outdisplay 5');
                 return ('0' + currentEntry);
             }
             else {
+               console.log('Outdisplay 6');
                return tempOperation.join('');
                //return currentEntry;
             }
@@ -84,7 +90,8 @@ export default {
         width: 400px;
         height: 100px;
         margin: auto;
-        border: 1px solid black;
+        background-color: rgba(93, 199, 111, 0.2);
+	border: 4px inset #0f2940;
         display: flex;
         flex-direction: column;
         text-align: right;
@@ -102,7 +109,7 @@ export default {
     #input-display {
         width: auto;
         height: 50px;
-        font-size: 40px;
+        font-size: 35px;
         font-family: 'Graduate', cursive;
         margin-right: 39px;
         margin-bottom: 5px;

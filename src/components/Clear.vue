@@ -23,6 +23,8 @@ export default {
 <style>
     #clear {
         width: 80px;
-        height: 160px;
+        height: 156px;
+        vertical-align: middle;
+        display: table-cell;
     }
 </style>

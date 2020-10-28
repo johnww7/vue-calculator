@@ -78,14 +78,29 @@ export default {
         width: 500px;
         height: 500px;
         display: grid;
-        margin: 25px auto;
+        /*margin: 25px auto;*/
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+  /* bring your own prefixes */
+        transform: translate(-50%, -50%);
         
-        border: 2px solid blue;
+        /*border:5px outset #3e4348;
+        border-radius: 10px 50px 30px;
+	background-color:rgba(47, 64, 80, 0.2);
+	box-shadow: 5px 10px 100px inset;*/
+    border:5px outset #3e4348;
+		border-radius: 10px 50px 30px;
+		background-clip: border-box;
+		background-image: -webkit-linear-gradient(45deg, #595959 12%,#4c4c4c 15%,#4c4c4c 15%,#515151 39%,#353832 61%,#d3d3d3 89%); /* Chrome10-25,Safari5.1-6 */
+		background-image: linear-gradient(45deg, #595959 12%,#4c4c4c 15%,#4c4c4c 15%,#515151 39%,#353832 61%,#d3d3d3 89%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
         grid-template-columns: repeat(5, 80px);
         grid-template-rows: repeat(6, 80px);
         /*justify-items: center;
         align-items: center;*/
         justify-content: center;
+        padding-bottom: 10px;
         padding-top: 10px;
         grid-column-gap: 1px;
         grid-row-gap: 1px;
@@ -97,7 +112,6 @@ export default {
             "one two three subtract equal"
             "num0 num0 deci add equal";
     }
-
     .display-area{
         grid-area: display;
     }
@@ -120,5 +134,46 @@ export default {
     */
     .ops-area {
         grid-area: ops;
+    }
+
+    button {
+        -moz-box-shadow: 0px 10px 16px -7px #0e20e6;
+        -webkit-box-shadow: 0px 10px 16px -7px #0e20e6;
+        box-shadow: 0px 10px 16px -7px #0e20e6;
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5736d9), color-stop(1, #333859));
+        background:-moz-linear-gradient(top, #5736d9 5%, #333859 100%);
+        background:-webkit-linear-gradient(top, #5736d9 5%, #333859 100%);
+        background:-o-linear-gradient(top, #5736d9 5%, #333859 100%);
+        background:-ms-linear-gradient(top, #5736d9 5%, #333859 100%);
+        background:linear-gradient(to bottom, #5736d9 5%, #333859 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5736d9', endColorstr='#333859',GradientType=0);
+        background-color:#5736d9;
+        -moz-border-radius:8px;
+        -webkit-border-radius:8px;
+        border-radius:8px;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family:Times New Roman;
+        font-size:20px;
+        font-weight:bold;
+        padding:13px 32px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #c1b9c9;
+        margin: 5px;
+    }
+    button:hover {
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #333859), color-stop(1, #5736d9));
+        background:-moz-linear-gradient(top, #333859 5%, #5736d9 100%);
+        background:-webkit-linear-gradient(top, #333859 5%, #5736d9 100%);
+        background:-o-linear-gradient(top, #333859 5%, #5736d9 100%);
+        background:-ms-linear-gradient(top, #333859 5%, #5736d9 100%);
+        background:linear-gradient(to bottom, #333859 5%, #5736d9 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#333859', endColorstr='#5736d9',GradientType=0);
+        background-color:#333859;
+    }
+    button:active {
+        position:relative;
+        top:1px;
     }
 </style>

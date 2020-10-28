@@ -52,8 +52,13 @@ export const store = new Vuex.Store({
         addOperation(state, value){
             let lastEntireOperation = state.entireOperation[state.entireOperation.length-1];
             let arithmeticExpression = /[+-×÷]/;
+            if(arithmeticExpression.test(lastEntireOperation)) {
+                state.entireOperation.push(state.currentEntry, value);
+                state.currentEntry = value;
+                state.currentEntry = '';
+            }
             if(arithmeticExpression.test(lastEntireOperation) && state.currentEntry == '') {
-                console.log('Operation: ' + state.entireOperation);
+                console.log('Operation from store: ' + state.entireOperation);
                 state.currentEntry = ''
             }
             else {

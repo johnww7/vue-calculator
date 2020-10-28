@@ -22,7 +22,7 @@ export default {
 
 <style>
     .arith-button {
-        width: 80px;
-        height: 80px;
+        width: 75px;
+        height: 75px;
     }
 </style>
