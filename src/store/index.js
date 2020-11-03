@@ -53,7 +53,15 @@ export const store = new Vuex.Store({
             let lastEntireOperation = state.entireOperation[state.entireOperation.length-1];
             console.log('Last operator: ' + lastEntireOperation);
             let arithmeticExpression = /[+-×÷]/;
-            if(arithmeticExpression.test(lastEntireOperation) && lastEntireOperation !== undefined && value !== '-') {
+            if(arithmeticExpression.test(lastEntireOperation-1) && lastEntireOperation == '-' && value !== '-') {
+                console.log('Removing 2 operators');
+                state.entireOperation.pop();
+                state.entireOperation.pop();
+                state.entireOperation.push(value);
+                state.currentEntry = value;
+                state.currentEntry = '';
+            }
+            else if(arithmeticExpression.test(lastEntireOperation) && lastEntireOperation !== undefined && value !== '-') {
                 state.entireOperation.pop();
                 console.log('After removing op: ' + state.entireOperation);
                 console.log('state: ' + state.currentEntry + ' : ' + value);
@@ -62,11 +70,18 @@ export const store = new Vuex.Store({
                 state.currentEntry = value;
                 state.currentEntry = '';
             }
+            else if(arithmeticExpression.test(lastEntireOperation) && lastEntireOperation !== undefined && value == '-'){
+                console.log('Adding minus sign');
+                state.entireOperation.push(state.currentEntry, value);
+                state.currentEntry = value;
+                state.currentEntry = '';  
+            }
             else if(arithmeticExpression.test(lastEntireOperation) && state.currentEntry == '') {
                 console.log('Operation from store: ' + state.entireOperation);
                 state.currentEntry = ''
             }
             else {
+                console.log('push state current entry and operation entered');
                 state.entireOperation.push(state.currentEntry, value)
                 state.currentEntry = value;
                 state.currentEntry = '';
