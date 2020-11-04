@@ -53,7 +53,15 @@ export const store = new Vuex.Store({
             let lastEntireOperation = state.entireOperation[state.entireOperation.length-1];
             console.log('Last operator: ' + lastEntireOperation);
             let arithmeticExpression = /[+-×÷]/;
-            if(arithmeticExpression.test(lastEntireOperation-1) && lastEntireOperation == '-' && value !== '-') {
+            let arithemticExprNoMinus = /[+×÷]/;
+            if((state.entireOperation).includes('=') && arithmeticExpression.test(value)){
+                state.accumulator = 0;
+                state.currentEntry = value;
+                let length = state.entireOperation.length
+                state.entireOperation.splice(0, length);
+                state.entireOperation.push(lastEntireOperation);
+            }
+            else if(arithmeticExpression.test(lastEntireOperation-1) && lastEntireOperation == '-' && value !== '-') {
                 console.log('Removing 2 operators');
                 state.entireOperation.pop();
                 state.entireOperation.pop();
@@ -70,9 +78,10 @@ export const store = new Vuex.Store({
                 state.currentEntry = value;
                 state.currentEntry = '';
             }
-            else if(arithmeticExpression.test(lastEntireOperation) && lastEntireOperation !== undefined && value == '-'){
-                console.log('Adding minus sign');
-                state.entireOperation.push(state.currentEntry, value);
+            else if(arithemticExprNoMinus.test(lastEntireOperation) && lastEntireOperation !== undefined && value == '-'){
+                console.log('Adding minus sign' + ' currententry: ' + state.currentEntry);
+                //state.entireOperation.push(state.currentEntry, value);
+                state.entireOperation.push(value);
                 state.currentEntry = value;
                 state.currentEntry = '';  
             }

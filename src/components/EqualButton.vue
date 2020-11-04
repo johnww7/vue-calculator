@@ -18,17 +18,27 @@ export default {
             //this.$store.commit('clearAll');
         },
         findTotal(){
-            //let testExp = /[+-×÷−]/;
+            let testExp = /[+×÷]/;
+            let testForMinus = /[-]/;
             let entireOperation = this.$store.getters.getEntireOperation;
             console.log('Whats in entire Operation: ' + entireOperation);
             let tempArr = entireOperation.reduce(function(acc, next) {
                 let tempValue = Number.parseFloat(next); 
-                if(Number.isNaN(tempValue) == false){
+                
+                if(testExp.test(acc[acc.length-2]) && testForMinus.test(acc[acc.length-1]) && Number.isNaN(tempValue) == false) {
+                    let lastAccEntry =  acc[acc.length-1] + tempValue;
+                    acc.pop();    
+                    acc.push(lastAccEntry);
+                }
+                else if(Number.isNaN(tempValue) == false){
+                    console.log('Is Nan: ' + tempValue);
                     acc.push(tempValue);
                 }
                 else {
+                    console.log('Push next: ' + next);
                     acc.push(next);
                 }
+                console.log('Whats in acc: ' + acc);
                 return acc;       
             }, []);
 
