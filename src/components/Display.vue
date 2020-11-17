@@ -11,17 +11,30 @@ export default {
     name: 'display',
     computed: {
         currentEntryDisplay() {
-            let currentEntry = this.$store.getters.getEntry;
+            let currentEntry = (this.$store.getters.getEntry);
             let currentOperation = this.$store.getters.getEntireOperation;
+            let accumulator = this.$store.getters.getTotalValue;
             let arithmeticExpression = /[+-×÷]/;
-            console.log('current inputdisplay: ' + currentEntry)
-            if(currentEntry !== '') {
+            console.log('current inputdisplay: ' + currentEntry + ' acc: ' + accumulator);
+            console.log('type: ' + typeof(currentEntry) + ' Length: ' + currentEntry.length);
+            
+            if(currentEntry !== '' && arithmeticExpression.test(currentEntry) == false) {
+                console.log('Input display 1: ' + currentEntry)
+                return currentEntry;
+            }
+            else if(currentEntry !== '' && arithmeticExpression.test(currentEntry)) {
+                // && arithmeticExpression.test(accumulator) == false
+                console.log('Input display 2: ' + currentEntry)
+                //let entryPlace= currentEntry.slice(1);
+                
+                //return entryPlace;
                 return currentEntry;
             }
             else if(arithmeticExpression.test(currentOperation[currentOperation.length-1])) {
+                console.log('input display: ' + currentOperation);
                 return currentOperation[currentOperation.length-1]
             }else {
-            //console.log('current inputdisplay: ' + currentEntry) 
+                console.log('current inputdisplay: ' + currentEntry) 
                 return this.$store.getters.getEntry;
             }
             /*let returnedEntry = this.$store.getters.getEntry;
@@ -59,8 +72,9 @@ export default {
                 return tempOperation.join('');            
             }
             else if((!Array.isArray(tempOperation)||tempOperation.length !== 0) && tempOperation.includes('=') == false) {
-                console.log('Outdisplay 4');
+                console.log('Outdisplay 4: ' + (tempOperation.join('') + currentEntry));
                 return tempOperation.join('') + currentEntry;
+                //return tempOperation.join('');
                 //return currentEntry;
             }
             else if((!Array.isArray(tempOperation) || !tempOperation.length) &&  currentEntry == '.') {

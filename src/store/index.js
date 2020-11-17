@@ -22,6 +22,7 @@ export const store = new Vuex.Store({
     },
     mutations: {
         incrementEntry(state, value) {
+            //let arithmeticExpression = /[+-×÷]/;
             if((state.entireOperation).includes('=')) {
                 state.accumulator = 0;
                 state.currentEntry = '0';
@@ -37,10 +38,15 @@ export const store = new Vuex.Store({
                 state.currentEntry += '.';
                 console.log('Add decimal after 0')
             }
+            /*else if(state.currentEntry.charAt(state.currentEntry.length-1) !== '.'
+            || value !== '.' || arithmeticExpression.test(state.currentEntry.length-1) == false) {
+                state.currentEntry = value;
+                console.log('Checking for operator: ' + state.currentEntry)
+            }*/
             else if(state.currentEntry.charAt(state.currentEntry.length-1) !== '.'
-                || value !== '.'){
+                || value !== '.' ){
                     state.currentEntry += value;
-                    console.log('Adding value to entry')
+                    console.log('Adding value to entry: ' + state.currentEntry);
             }
             else {
                // state.currentEntry;
@@ -51,15 +57,22 @@ export const store = new Vuex.Store({
         },
         addOperation(state, value){
             let lastEntireOperation = state.entireOperation[state.entireOperation.length-1];
+            let entry = Number(state.currentEntry);
+            console.log('entry: ' + entry);
+            console.log('Entire operation before operator: ' + state.entireOperation)
             console.log('Last operator: ' + lastEntireOperation);
             let arithmeticExpression = /[+-×÷]/;
             let arithemticExprNoMinus = /[+×÷]/;
             if((state.entireOperation).includes('=') && arithmeticExpression.test(value)){
-                state.accumulator = 0;
+                state.accumulator = lastEntireOperation;
                 state.currentEntry = value;
                 let length = state.entireOperation.length
+                console.log('last operation: ' + lastEntireOperation);
                 state.entireOperation.splice(0, length);
                 state.entireOperation.push(lastEntireOperation);
+                state.entireOperation.push(value);
+                state.currentEntry = '';
+                console.log('Whats in operation after total: ' + state.entireOperation);
             }
             else if(arithmeticExpression.test(lastEntireOperation-1) && lastEntireOperation == '-' && value !== '-') {
                 console.log('Removing 2 operators');
@@ -69,16 +82,19 @@ export const store = new Vuex.Store({
                 state.currentEntry = value;
                 state.currentEntry = '';
             }
-            else if(arithmeticExpression.test(lastEntireOperation) && lastEntireOperation !== undefined && value !== '-') {
+            else if(arithmeticExpression.test(lastEntireOperation) && lastEntireOperation !== undefined && 
+            value !== '-' && isNaN(entry) == true) {
                 state.entireOperation.pop();
                 console.log('After removing op: ' + state.entireOperation);
                 console.log('state: ' + state.currentEntry + ' : ' + value);
+                console.log('state tyep: ' + typeof(state.currentEntry))
                 state.entireOperation.push(value);
                 
                 state.currentEntry = value;
                 state.currentEntry = '';
             }
-            else if(arithemticExprNoMinus.test(lastEntireOperation) && lastEntireOperation !== undefined && value == '-'){
+            else if(arithemticExprNoMinus.test(lastEntireOperation) && lastEntireOperation !== undefined 
+            && value == '-' && isNaN(entry) == true){
                 console.log('Adding minus sign' + ' currententry: ' + state.currentEntry);
                 //state.entireOperation.push(state.currentEntry, value);
                 state.entireOperation.push(value);
