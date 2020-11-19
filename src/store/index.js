@@ -58,7 +58,7 @@ export const store = new Vuex.Store({
         addOperation(state, value){
             let lastEntireOperation = state.entireOperation[state.entireOperation.length-1];
             let entry = Number(state.currentEntry);
-            console.log('entry: ' + entry);
+            console.log('entry: ' + entry + ' value: ' + value);
             console.log('Entire operation before operator: ' + state.entireOperation)
             console.log('Last operator: ' + lastEntireOperation);
             let arithmeticExpression = /[+-×÷]/;
@@ -82,8 +82,16 @@ export const store = new Vuex.Store({
                 state.currentEntry = value;
                 state.currentEntry = '';
             }
+            else if(isNaN(entry) == false && arithmeticExpression.test(value) && entry !== 0){
+                //&& (arithmeticExpression.test(lastEntireOperation) && arithmeticExpression.test(value)) == false
+                console.log('push state current entry and operation entered');
+                state.entireOperation.push(state.currentEntry, value)
+                state.currentEntry = value;
+                state.currentEntry = '';
+            }
             else if(arithmeticExpression.test(lastEntireOperation) && lastEntireOperation !== undefined && 
-            value !== '-' && isNaN(entry) == true) {
+            value !== '-' ) {
+                //&& isNaN(entry) == true
                 state.entireOperation.pop();
                 console.log('After removing op: ' + state.entireOperation);
                 console.log('state: ' + state.currentEntry + ' : ' + value);
@@ -94,7 +102,8 @@ export const store = new Vuex.Store({
                 state.currentEntry = '';
             }
             else if(arithemticExprNoMinus.test(lastEntireOperation) && lastEntireOperation !== undefined 
-            && value == '-' && isNaN(entry) == true){
+            && value == '-'){
+                // && isNaN(entry) == true
                 console.log('Adding minus sign' + ' currententry: ' + state.currentEntry);
                 //state.entireOperation.push(state.currentEntry, value);
                 state.entireOperation.push(value);
