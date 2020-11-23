@@ -17,7 +17,6 @@ export default {
     },
     methods: {
         getButtonValue() {
-            //this.$emit('numberedButtonPressed', this.buttonNum)
             let numberString = this.buttonNum.toString().replace(/\s/g, "");
             this.$store.commit('incrementEntry',  numberString);
             console.log("In number button component: " + typeof(this.buttonNum))

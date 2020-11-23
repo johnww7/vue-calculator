@@ -78,18 +78,11 @@ export default {
         width: 500px;
         height: 500px;
         display: grid;
-        /*margin: 25px auto;*/
         position: absolute;
         top: 50%;
         left: 50%;
         margin-right: -50%;
-  /* bring your own prefixes */
         transform: translate(-50%, -50%);
-        
-        /*border:5px outset #3e4348;
-        border-radius: 10px 50px 30px;
-	background-color:rgba(47, 64, 80, 0.2);
-	box-shadow: 5px 10px 100px inset;*/
     border:5px outset #3e4348;
 		border-radius: 10px 50px 30px;
 		background-clip: border-box;
@@ -97,8 +90,6 @@ export default {
 		background-image: linear-gradient(45deg, #595959 12%,#4c4c4c 15%,#4c4c4c 15%,#515151 39%,#353832 61%,#d3d3d3 89%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
         grid-template-columns: repeat(5, 80px);
         grid-template-rows: repeat(6, 80px);
-        /*justify-items: center;
-        align-items: center;*/
         justify-content: center;
         padding-bottom: 10px;
         padding-top: 10px;
@@ -128,10 +119,6 @@ export default {
         grid-area: num0;
         width: 160px;
     }
-    /*.num-area1 {
-        grid-area: num1;
-    }
-    */
     .ops-area {
         grid-area: ops;
     }

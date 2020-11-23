@@ -23,11 +23,7 @@ export default {
                 return currentEntry;
             }
             else if(currentEntry !== '' && arithmeticExpression.test(currentEntry)) {
-                // && arithmeticExpression.test(accumulator) == false
                 console.log('Input display 2: ' + currentEntry)
-                //let entryPlace= currentEntry.slice(1);
-                
-                //return entryPlace;
                 return currentEntry;
             }
             else if(arithmeticExpression.test(currentOperation[currentOperation.length-1])) {
@@ -37,28 +33,14 @@ export default {
                 console.log('current inputdisplay: ' + currentEntry) 
                 return this.$store.getters.getEntry;
             }
-            /*let returnedEntry = this.$store.getters.getEntry;
-            let arithmeticExpression = /[+-×÷]/;
-            let returnValue = ''
-            if(arithmeticExpression.test(returnedEntry)) {
-                returnValue = returnedEntry.charAt(1);
-            }
-            else {
-                returnValue += returnedEntry;
-            }
-            console.log('Display: ' + returnValue)
-            return returnValue;*/
+        
         },
         entireOperationDisplay() {
             let tempOperation = this.$store.getters.getEntireOperation;
             let currentEntry = this.$store.getters.getEntry;
-            //let lastOperation = tempOperation.length-1;
-            console.log('outputdisplay: ' + tempOperation);
             console.log('current Entry: ' + currentEntry);
             console.log('current Operation: ' + tempOperation);
-            //let emptyArray = [];
             if(!Array.isArray(tempOperation) || !tempOperation.length) {
-                //return '0';
                 console.log('Outdisplay 1');
                 return currentEntry;
             }
@@ -74,8 +56,7 @@ export default {
             else if((!Array.isArray(tempOperation)||tempOperation.length !== 0) && tempOperation.includes('=') == false) {
                 console.log('Outdisplay 4: ' + (tempOperation.join('') + currentEntry));
                 return tempOperation.join('') + currentEntry;
-                //return tempOperation.join('');
-                //return currentEntry;
+
             }
             else if((!Array.isArray(tempOperation) || !tempOperation.length) &&  currentEntry == '.') {
                 console.log('Outdisplay 5');
@@ -84,16 +65,9 @@ export default {
             else {
                console.log('Outdisplay 6');
                return tempOperation.join('');
-               //return currentEntry;
+
             }
-            
-            /*if(!Array.isArray(tempOperation) || !tempOperation.length) {
-                //return '0';
-                return currentEntry;
-            }
-            else {
-                return tempOperation.join('');
-            }*/
+
         }
     }
 }

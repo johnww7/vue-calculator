@@ -15,7 +15,6 @@ export default {
             this.findTotal();
             let accumulatedTotal = this.$store.getters.getTotalValue;
             this.$store.commit('pushAccumulator', accumulatedTotal);
-            //this.$store.commit('clearAll');
         },
         findTotal(){
             let testExp = /[+×÷]/;
@@ -50,7 +49,6 @@ export default {
                 if(element == "=") {
                    tempAcc = Math.round(operationArray[0]*1000)/1000;
                     console.log('Whats in tempAcc: ' + tempAcc)
-                    //this.$store.commit('setAccumulator', tempAcc);
                     break;
                 }
                 operationArray.push(element);
