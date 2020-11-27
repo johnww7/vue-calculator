@@ -50,21 +50,17 @@ export const store = new Vuex.Store({
         addOperation(state, value){
             let lastEntireOperation = state.entireOperation[state.entireOperation.length-1];
             let entry = Number(state.currentEntry);
-            console.log('entry: ' + entry + ' value: ' + value);
-            console.log('Entire operation before operator: ' + state.entireOperation)
-            console.log('Last operator: ' + lastEntireOperation);
             let arithmeticExpression = /[+-×÷]/;
             let arithemticExprNoMinus = /[+×÷]/;
             if((state.entireOperation).includes('=') && arithmeticExpression.test(value)){
+                console.log('Continuing calculation after equals');
                 state.accumulator = lastEntireOperation;
                 state.currentEntry = value;
                 let length = state.entireOperation.length
-                console.log('last operation: ' + lastEntireOperation);
                 state.entireOperation.splice(0, length);
                 state.entireOperation.push(lastEntireOperation);
                 state.entireOperation.push(value);
                 state.currentEntry = '';
-                console.log('Whats in operation after total: ' + state.entireOperation);
             }
             else if(arithmeticExpression.test(lastEntireOperation-1) && lastEntireOperation == '-' && value !== '-' && entry == 0) {
                 console.log('Removing 2 operators');
@@ -82,12 +78,9 @@ export const store = new Vuex.Store({
             }
             else if(arithmeticExpression.test(lastEntireOperation) && lastEntireOperation !== undefined && 
             value !== '-' ) {
+                console.log('Removing extra operator');
                 state.entireOperation.pop();
-                console.log('After removing op: ' + state.entireOperation);
-                console.log('state: ' + state.currentEntry + ' : ' + value);
-                console.log('state tyep: ' + typeof(state.currentEntry))
-                state.entireOperation.push(value);
-                
+                state.entireOperation.push(value);                
                 state.currentEntry = value;
                 state.currentEntry = '';
             }
@@ -99,7 +92,7 @@ export const store = new Vuex.Store({
                 state.currentEntry = '';  
             }
             else if(arithmeticExpression.test(lastEntireOperation) && state.currentEntry == '') {
-                console.log('Operation from store: ' + state.entireOperation);
+                console.log('Current entry remains blank if operator pressed again');
                 state.currentEntry = ''
             }
             else {

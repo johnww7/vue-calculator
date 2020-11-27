@@ -11,7 +11,6 @@ export default {
     name: "decimal-button",
     methods: {
         addDecimal() {
-            //let numberString = this.buttonNum.toString().replace(/\s/g, "");
             this.$store.commit('incrementEntry',  '.');
         }
     }

@@ -12,9 +12,6 @@ export default {
     methods:{
         allClear() {
             this.$store.commit('clearAll');
-            console.log('Entry: ' + this.$store.getters.getEntry);
-            console.log('EntireOperation: ' + this.$store.getters.getEntireOperation);
-            console.log('accumulator: ' + this.$store.getters.getTotalValue);
         }
     }
 }

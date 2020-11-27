@@ -16,7 +16,6 @@ export default {
             let accumulator = this.$store.getters.getTotalValue;
             let arithmeticExpression = /[+-×÷]/;
             console.log('current inputdisplay: ' + currentEntry + ' acc: ' + accumulator);
-            console.log('type: ' + typeof(currentEntry) + ' Length: ' + currentEntry.length);
             
             if(currentEntry !== '' && arithmeticExpression.test(currentEntry) == false) {
                 console.log('Input display 1: ' + currentEntry)
@@ -27,7 +26,7 @@ export default {
                 return currentEntry;
             }
             else if(arithmeticExpression.test(currentOperation[currentOperation.length-1])) {
-                console.log('input display: ' + currentOperation);
+                console.log('input display 3: ' + currentOperation);
                 return currentOperation[currentOperation.length-1]
             }else {
                 console.log('current inputdisplay: ' + currentEntry) 
@@ -38,8 +37,6 @@ export default {
         entireOperationDisplay() {
             let tempOperation = this.$store.getters.getEntireOperation;
             let currentEntry = this.$store.getters.getEntry;
-            console.log('current Entry: ' + currentEntry);
-            console.log('current Operation: ' + tempOperation);
             if(!Array.isArray(tempOperation) || !tempOperation.length) {
                 console.log('Outdisplay 1');
                 return currentEntry;
