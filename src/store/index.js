@@ -22,7 +22,7 @@ export const store = new Vuex.Store({
     },
     mutations: {
         incrementEntry(state, value) {
-            //let arithmeticExpression = /[+-×÷]/;
+            
             if((state.entireOperation).includes('=')) {
                 state.accumulator = 0;
                 state.currentEntry = '0';
@@ -66,7 +66,7 @@ export const store = new Vuex.Store({
                 state.currentEntry = '';
                 console.log('Whats in operation after total: ' + state.entireOperation);
             }
-            else if(arithmeticExpression.test(lastEntireOperation-1) && lastEntireOperation == '-' && value !== '-') {
+            else if(arithmeticExpression.test(lastEntireOperation-1) && lastEntireOperation == '-' && value !== '-' && entry == 0) {
                 console.log('Removing 2 operators');
                 state.entireOperation.pop();
                 state.entireOperation.pop();
